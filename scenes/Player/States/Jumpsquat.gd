@@ -8,8 +8,8 @@ func Enter():
 	pass
 	
 func Physics_Update():
-	if (state_machine.prev_state.name == "DashStart"):
-		player.b_reverse()
+	#if (state_machine.prev_state.name == "DashStart"):
+	player.b_reverse()
 		
 	
 	

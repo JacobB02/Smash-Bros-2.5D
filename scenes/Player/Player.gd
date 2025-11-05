@@ -35,7 +35,7 @@ var percentage = 0
 
 var can_fastfall = true
 #var in_hitpause = false
-
+var has_midair_shield = false
 
 
 
@@ -144,6 +144,8 @@ func _physics_process(_delta):
 			#SET EXIT VSP AND HSP
 	if (hitpause_time <= 0):
 		frame += 1
+		
+	
 	
 	#position.x = snapped(position.x, 0.01)
 	#position.y = snapped(position.y, 0.01)
