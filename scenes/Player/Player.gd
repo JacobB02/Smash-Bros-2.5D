@@ -133,6 +133,8 @@ func _physics_process(_delta):
 	#HELLL YEA
 	#the hitbox spawning needs to be done BEFORE this
 	
+	print(frame)
+	
 	
 	if (hitpause_time > 0):
 		hitpause_time -= 1

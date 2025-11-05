@@ -4,7 +4,8 @@ var focal_points = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	focal_points = [$"../Player",$"../Player2"]
+	#focal_points = [$"../Player",$"../Player2"]
+	focal_points = [$"../Player"]
 	pass # Replace with function body.
 
 func move():

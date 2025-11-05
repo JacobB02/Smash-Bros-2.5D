@@ -33,16 +33,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_du7pj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1, 0)
 mesh = SubResource("BoxMesh_yb3d4")
 skin = SubResource("Skin_jbk1w")
-surface_material_override/0 = SubResource("StandardMaterial3D_kfqhr")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(0.5, 0, 0, 0, 0.25, 0, 0, 0, 0.5, 0.5, 0.25, 0)
-mesh = SubResource("BoxMesh_yb3d4")
-skin = SubResource("Skin_jbk1w")
-skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_kfqhr")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("player", "initial_state")]
