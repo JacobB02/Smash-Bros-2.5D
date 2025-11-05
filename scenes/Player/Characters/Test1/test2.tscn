@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cllax257v43m6"]
+
+[ext_resource type="PackedScene" uid="uid://b7hgfgdr7juoq" path="res://scenes/Player/player.tscn" id="1_g6xm6"]
+[ext_resource type="Script" uid="uid://b0igjdpvuy7ah" path="res://scenes/Player/Characters/Test1/Attacks/Ftilt.gd" id="2_v04vd"]
+
+[node name="Player" instance=ExtResource("1_g6xm6")]
+
+[node name="Attacks" type="Node" parent="." index="6"]
+
+[node name="Ftilt" type="Node" parent="Attacks" index="0"]
+script = ExtResource("2_v04vd")

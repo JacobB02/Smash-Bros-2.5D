@@ -1,0 +1,88 @@
+[gd_scene load_steps=19 format=3 uid="uid://b7hgfgdr7juoq"]
+
+[ext_resource type="Script" uid="uid://b05uxoro8jvso" path="res://scenes/Player/Player.gd" id="1_1jjfh"]
+[ext_resource type="Script" uid="uid://d0qm8evwp8ayi" path="res://scenes/Player/PlayerStateMachine.gd" id="2_1ww4c"]
+[ext_resource type="Script" uid="uid://kvk3df4e18ci" path="res://scenes/Player/States/Idle.gd" id="2_hky00"]
+[ext_resource type="Script" uid="uid://bjl43oyvwshdb" path="res://scenes/Player/States/Attack.gd" id="2_yn07p"]
+[ext_resource type="Script" uid="uid://cnpwnvoobdv2l" path="res://scenes/Player/States/Jump.gd" id="3_hlm5o"]
+[ext_resource type="Script" uid="uid://b12wk8tanrn3o" path="res://scenes/Player/States/Jumpsquat.gd" id="4_ix83h"]
+[ext_resource type="Script" uid="uid://ctndyx5byg2ef" path="res://scenes/Player/InputSystem.gd" id="5_7ionf"]
+[ext_resource type="Script" uid="uid://b1n0638g6iy07" path="res://scenes/Player/States/Land.gd" id="6_rsnvc"]
+[ext_resource type="Script" uid="uid://bhhgrqxtxr8ef" path="res://scenes/Player/States/DashStart.gd" id="7_542n1"]
+[ext_resource type="Script" uid="uid://27kyy8rik6ue" path="res://scenes/Player/States/DoubleJump.gd" id="8_7chlk"]
+[ext_resource type="Script" uid="uid://bgvuvf3ovekfu" path="res://scenes/Player/States/Run.gd" id="9_mkvr5"]
+[ext_resource type="Script" uid="uid://coppxtypn4xrc" path="res://scenes/Player/States/Hitstun.gd" id="10_t042r"]
+[ext_resource type="PackedScene" uid="uid://drw1o8kpynes4" path="res://scenes/components/hurtbox/hurtbox.tscn" id="11_s2fff"]
+[ext_resource type="Script" uid="uid://jl3ieg1gkgt3" path="res://scenes/Player/States/Shield.gd" id="12_t6q27"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_du7pj"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yb3d4"]
+
+[sub_resource type="Skin" id="Skin_jbk1w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kfqhr"]
+
+[node name="Player" type="CharacterBody3D"]
+collision_mask = 6
+script = ExtResource("1_1jjfh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_du7pj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_yb3d4")
+skin = SubResource("Skin_jbk1w")
+surface_material_override/0 = SubResource("StandardMaterial3D_kfqhr")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.25, 0, 0, 0, 0.5, 0.5, 0.25, 0)
+mesh = SubResource("BoxMesh_yb3d4")
+skin = SubResource("Skin_jbk1w")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_kfqhr")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("player", "initial_state")]
+script = ExtResource("2_1ww4c")
+player = NodePath("..")
+initial_state = NodePath("Idle")
+
+[node name="Jump" type="Node" parent="StateMachine"]
+script = ExtResource("3_hlm5o")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("2_hky00")
+
+[node name="Jumpsquat" type="Node" parent="StateMachine"]
+script = ExtResource("4_ix83h")
+
+[node name="Land" type="Node" parent="StateMachine"]
+script = ExtResource("6_rsnvc")
+
+[node name="DashStart" type="Node" parent="StateMachine"]
+script = ExtResource("7_542n1")
+
+[node name="DoubleJump" type="Node" parent="StateMachine"]
+script = ExtResource("8_7chlk")
+
+[node name="Run" type="Node" parent="StateMachine"]
+script = ExtResource("9_mkvr5")
+
+[node name="Hitstun" type="Node" parent="StateMachine"]
+script = ExtResource("10_t042r")
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("2_yn07p")
+
+[node name="Shield" type="Node" parent="StateMachine"]
+script = ExtResource("12_t6q27")
+metadata/_custom_type_script = "uid://jl3ieg1gkgt3"
+
+[node name="InputSystem" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("5_7ionf")
+player = NodePath("..")
+
+[node name="Hurtbox" parent="." instance=ExtResource("11_s2fff")]

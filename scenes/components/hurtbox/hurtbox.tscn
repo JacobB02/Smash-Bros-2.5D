@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://drw1o8kpynes4"]
+
+[ext_resource type="Script" path="res://scenes/components/hurtbox/hurtbox.gd" id="1_niegb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7gkh0"]
+margin = 0.001
+size = Vector3(1, 2, 1)
+
+[node name="Hurtbox" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000292182, 0, 0)
+script = ExtResource("1_niegb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_7gkh0")
