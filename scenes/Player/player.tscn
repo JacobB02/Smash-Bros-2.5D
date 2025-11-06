@@ -19,6 +19,7 @@
 size = Vector3(1, 2, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_yb3d4"]
+size = Vector3(0.1, 0.1, 0.1)
 
 [sub_resource type="Skin" id="Skin_jbk1w"]
 
@@ -33,7 +34,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_du7pj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1, 0)
 mesh = SubResource("BoxMesh_yb3d4")
 skin = SubResource("Skin_jbk1w")
 surface_material_override/0 = SubResource("StandardMaterial3D_kfqhr")

@@ -17,6 +17,8 @@ func Enter():
 	pass
 	
 func Physics_Update():
+	
+	player.get_node("AnimationPlayer").play("jump_rl")
 	player.air_physics(player.FALL_GRAVITY, player.AIR_FRICTION, player.AIR_ACCEL)
 
 	if player.frame == 7 and player.hitpause_time <= 0:

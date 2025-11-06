@@ -1,5 +1,4 @@
-res://scenes/Player/Player.gd
-res://scenes/level_1.tscn
-res://scenes/StageCamera.gd
+res://scenes/Player/States/Jump.gd
+res://scenes/Player/States/Jumpsquat.gd
 res://scenes/Player/Characters/Test1/test2.tscn
-res://scenes/Player/player.tscn
+res://scenes/Player/States/DoubleJump.gd

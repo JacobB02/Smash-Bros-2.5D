@@ -7,6 +7,8 @@ class_name Dash_Start
 func Enter():
 	super()
 	
+	player.get_node("AnimationPlayer").play("Run")
+	
 	print("IN DASH START ENTER")
 	print(str(state_machine.prev_state.name))
 

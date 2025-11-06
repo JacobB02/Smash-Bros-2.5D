@@ -11,12 +11,14 @@ func Physics_Update():
 	#if (state_machine.prev_state.name == "DashStart"):
 	player.b_reverse()
 		
+	player.get_node("AnimationPlayer").play("Jumpstart")
+	#player.get_node("AnimationPlayer").seek(1/60)
+
 	
 	
 
 func Exit():
-	if (state_machine.prev_state.name != "DashStart" and 
-	state_machine.prev_state.name != "Run"):
+	if (state_machine.prev_state.name != "DashStart"):
 		if (player.input_dict["right_down"] > player.input_dict["left_down"]):
 			player.velocity.x = max(player.JUMP_CHANGE, player.velocity.x)
 			#player.velocity.x = clamp(player.velocity.x+player.JUMP_CHANGE, -player.JUMP_HSP_MAX, player.JUMP_HSP_MAX)

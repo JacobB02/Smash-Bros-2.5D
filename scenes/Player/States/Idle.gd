@@ -7,6 +7,10 @@ func Enter():
 	
 func Physics_Update():
 	
+	player.get_node("AnimationPlayer").play("idle")
+
+
+	
 	player.ground_friction(player.GROUND_FRICTION)
 	pass
 	

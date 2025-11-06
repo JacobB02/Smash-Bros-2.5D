@@ -8,6 +8,10 @@ func Enter():
 	
 func Physics_Update():
 	player.air_physics()
+	
+	player.get_node("AnimationPlayer").play("jump_rl")
+	#player.get_node("AnimationPlayer").seek(1)
+
 
 func Transition_Check():
 	if player.is_on_floor():
