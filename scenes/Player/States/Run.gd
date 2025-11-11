@@ -7,6 +7,8 @@ class_name Run
 func Enter():
 	super()
 	
+	player.get_node("AnimationPlayer").play("run")
+	#player.get_node("AnimationPlayer").pause()
 	
 
 func Physics_Update():
@@ -14,6 +16,13 @@ func Physics_Update():
 	#sprite.set_frame(parent.frame*sprite.sprite_frames.get_frame_count(sprite.get_animation())/parent.DASH_START_LENGTH)
 	player.ground_friction(player.GROUND_FRICTION)
 	player.velocity.x = player.RUNSPEED*player.dir
+	
+	#player.get_node("AnimationPlayer").play("run", -1, 1)
+#	player.get_node("AnimationPlayer").seek(15/60, 1, 1)
+
+	player.get_node("AnimationPlayer").seek(((player.frame/5)%10+1)*0.03333333333333333, true)
+	
+	#print(player.frame)
 	
 func Transition_Check():
 	if !player.is_on_floor():

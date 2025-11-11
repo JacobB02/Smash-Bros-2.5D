@@ -1,4 +1,2 @@
-res://scenes/Player/States/Jump.gd
-res://scenes/Player/States/Jumpsquat.gd
-res://scenes/Player/Characters/Test1/test2.tscn
-res://scenes/Player/States/DoubleJump.gd
+res://scenes/Player/States/DashStart.gd
+res://scenes/Player/States/Run.gd

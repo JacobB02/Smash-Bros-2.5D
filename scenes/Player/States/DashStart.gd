@@ -7,7 +7,7 @@ class_name Dash_Start
 func Enter():
 	super()
 	
-	player.get_node("AnimationPlayer").play("Run")
+	player.get_node("AnimationPlayer").play("run")
 	
 	print("IN DASH START ENTER")
 	print(str(state_machine.prev_state.name))
@@ -33,6 +33,13 @@ func Enter():
 
 
 func Physics_Update():
+	
+	player.get_node("AnimationPlayer").play("run", -1, 0)
+	player.get_node("AnimationPlayer").seek(((player.frame/5)%10+1)*0.03333333333333333, true)
+	#print(28/30)
+	#print(floor(player.frame/4))
+	#print(player.frame)
+
 	#sprite.play("DashStart")
 	#sprite.set_frame(parent.frame*sprite.sprite_frames.get_frame_count(sprite.get_animation())/parent.DASH_START_LENGTH)
 	player.ground_friction(player.GROUND_FRICTION)
