@@ -21,6 +21,9 @@ class_name Player
 
 
 var hitpause_time = 10
+var hitstun_remaining = 0
+var hitstun_total = 0
+
 
 var old_velocity = Vector2(0,0)
 
@@ -100,11 +103,15 @@ var in_first_jump = 0
 @onready var attack_name
 @onready var attack_file
 
+@onready var PlatDetector = get_node("PlatDetector")
+
 @onready var input_dict = get_node("InputSystem").input_dict
 @onready var inputs = get_node("InputSystem")
 
 @onready var state = get_node("StateMachine").current_state
 @onready var prev_state = get_node("StateMachine").prev_state
+
+var platform_collision_list = []
 
 
 
@@ -133,6 +140,29 @@ func _physics_process(_delta):
 	#HELLL YEA
 	#the hitbox spawning needs to be done BEFORE this
 	
+	#if (velocity.y > 0 || input_dict["down_down"]):
+		#set_collision_mask_value(3, false)
+	#else:
+		#set_collision_mask_value(3, true)
+		#
+	#set_collision_mask_value(2, true)
+	if is_on_floor() and input_dict["down_hard_pressed"]:
+		set_collision_mask_value(3, false) 
+	elif !is_on_floor() and input_dict["down_down"]:
+		set_collision_mask_value(3, false) 
+	elif !input_dict["down_hard_pressed"]:
+		set_collision_mask_value(3, true) 
+	
+	#This is the area that lets you land on platforms
+	PlatDetector.force_shapecast_update()
+	for collider in get_collision_exceptions():
+		remove_collision_exception_with(collider)
+	if PlatDetector.is_colliding():
+		PlatDetector.force_shapecast_update()
+		for body in PlatDetector.collision_result:
+			print(body)
+			add_collision_exception_with(body.collider)
+	
 	
 	if (hitpause_time > 0):
 		hitpause_time -= 1
@@ -144,9 +174,11 @@ func _physics_process(_delta):
 			#SET EXIT VSP AND HSP
 	if (hitpause_time <= 0):
 		frame += 1
+		if (hitstun_remaining > 0):
+			hitstun_remaining -= 1
 		
 	
-	
+	#print(state)
 	#position.x = snapped(position.x, 0.01)
 	#position.y = snapped(position.y, 0.01)
 	move_and_slide()
@@ -251,6 +283,9 @@ func create_hitbox(width, height, shape, damage, angle, base_kb,
 	
 #CHECKS EVERY SINGLE COLLIDING HITBOX
 func check_colliding_hitboxes():
+	
+	
+
 
 	var i = 0
 	var hitboxes_hit_by = []
@@ -293,7 +328,8 @@ func check_colliding_hitboxes():
 	var new_launch_vector = Vector2(0,0)
 	var new_launch_speed = 0
 	
-	#FOR ALL OF THE HITBOXES
+	
+	
 	for hitbox in hitboxes_hit_by:
 		#spawn in the sounds and hitfx
 		#ADD THEIR DAMAGE TO YOU
@@ -313,6 +349,9 @@ func check_colliding_hitboxes():
 		#hitpause time for the PERSON BEING HIT is the max base hitpause 
 		#of all of the attacks hitting them
 		hitpause_time = max(hitpause_time, hitbox.base_hitpause)
+		hitstun_total = max(hitstun_total, ceil(new_launch_speed))
+		hitstun_remaining = hitstun_total
+		
 	
 
 	if hitboxes_hit_by != []:
@@ -330,6 +369,11 @@ func check_colliding_hitboxes():
 		for child in get_children():
 			if child is Hitbox:
 				child.queue_free()
+				
+	#FOR ALL OF THE HITBOXES
+	if hitboxes_hit_by != []:
+		print("_____________hello")
+		get_node("StateMachine").on_child_transition("hitstun")
 		
 
 func knockback(p,hitbox):

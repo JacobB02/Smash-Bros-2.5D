@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b7hgfgdr7juoq"]
+[gd_scene load_steps=20 format=3 uid="uid://b7hgfgdr7juoq"]
 
 [ext_resource type="Script" uid="uid://b05uxoro8jvso" path="res://scenes/Player/Player.gd" id="1_1jjfh"]
 [ext_resource type="Script" uid="uid://d0qm8evwp8ayi" path="res://scenes/Player/PlayerStateMachine.gd" id="2_1ww4c"]
@@ -24,6 +24,8 @@ size = Vector3(0.1, 0.1, 0.1)
 [sub_resource type="Skin" id="Skin_jbk1w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kfqhr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t6q27"]
 
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 6
@@ -79,3 +81,11 @@ script = ExtResource("5_7ionf")
 player = NodePath("..")
 
 [node name="Hurtbox" parent="." instance=ExtResource("11_s2fff")]
+
+[node name="PlatDetector" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_t6q27")
+target_position = Vector3(0, 1.5, 0)
+collision_mask = 4
+collide_with_areas = true
+debug_shape_custom_color = Color(0.40408945, 0.47380614, 0.909852, 1)

@@ -5,29 +5,36 @@ class_name InputSystem
 
 #onready just means var is included in Ready function
 @onready var buffer_time = 20 #5/60th of a second for a buffer
+@onready var hard_press_threshold = 0.65
+
 
 @export var input_dict = {
 "attack_pressed": 0, 
 "special_pressed": 0, 
 
 "left_pressed": 0,
+"left_hard_pressed": 0,
 "left_down": 0,
 
 "right_pressed": 0,
+"right_hard_pressed": 0,
 "right_down": 0,
 
 "up_pressed": 0,
+"up_hard_pressed": 0,
 "up_down": 0,
 
 "down_pressed": 0,
+"down_hard_pressed": 0,
 "down_down": 0,
 
 "shield_pressed": 0,
 "shield_down": 0,
 
 "jump_pressed": 0,
-"jump_down": 0,
-"fastfall_pressed": 0}
+"jump_down": 0 #,
+#"fastfall_pressed": 0
+}
 
 func _ready():
 	pass
@@ -46,14 +53,26 @@ func lower_keys():
 			input_dict[key] -= 1
 	
 func set_input_dict():
+	
+	
+	#print()
 	if Input.is_action_just_pressed("right_%s" % player.id):
+		if (Input.get_action_raw_strength("right_%s" % player.id) > hard_press_threshold):
+			input_dict["right_hard_pressed"] = buffer_time
 		input_dict["right_pressed"] = buffer_time
 	if Input.is_action_just_pressed("left_%s" % player.id):
+		if (Input.get_action_raw_strength("left_%s" % player.id) > hard_press_threshold):
+			input_dict["left_hard_pressed"] = buffer_time
 		input_dict["left_pressed"] = buffer_time
 	if Input.is_action_just_pressed("down_%s" % player.id):
+		
+		if (Input.get_action_raw_strength("down_%s" % player.id) > hard_press_threshold):
+			input_dict["down_hard_pressed"] = buffer_time
 		input_dict["down_pressed"] = buffer_time
-		input_dict["fastfall_pressed"] = buffer_time
+		#input_dict["fastfall_pressed"] = buffer_time
 	if Input.is_action_just_pressed("up_%s" % player.id):
+		if (Input.get_action_raw_strength("up_%s" % player.id) > hard_press_threshold):
+			input_dict["up_hard_pressed"] = buffer_time
 		input_dict["up_pressed"] = buffer_time
 		#ADD TAP JUMP CASE:
 	if Input.is_action_just_pressed("jump_%s" % player.id):

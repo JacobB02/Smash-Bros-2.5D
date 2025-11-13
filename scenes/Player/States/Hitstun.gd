@@ -3,23 +3,20 @@ class_name Hitstun
 
 func Enter():
 	super()
-	player.velocity.y = player.JUMPSPEED
-	
-	if (player.input_dict["right_down"] > player.input_dict["left_down"]):
-		player.velocity.x = max(player.DJUMP_CHANGE, player.velocity.x)
-		#player.velocity.x = clamp(player.velocity.x+player.JUMP_CHANGE, -player.JUMP_HSP_MAX, player.JUMP_HSP_MAX)
-	elif (player.input_dict["right_down"] < player.input_dict["left_down"]):
-		player.velocity.x = min(-player.DJUMP_CHANGE, player.velocity.x)
-		#player.velocity.x = clamp(player.velocity.x-player.JUMP_CHANGE, -player.JUMP_HSP_MAX, player.JUMP_HSP_MAX)
-	
-		
+	print("hitstun time: ", player.hitstun_remaining)
+	#orig_velocity = 
 	pass
 	
 func Physics_Update():
-	player.air_physics(player.JUMP_GRAVITY, player.FALL_GRAVITY, player.AIR_FRICTION, player.AIR_ACCEL)
-
+	#player.air_physics(player.JUMP_GRAVITY, player.FALL_GRAVITY, player.AIR_FRICTION, player.AIR_ACCEL)
+	pass
+	
+	
+	
+	#print("I AM IN HITSTUN")
 
 	
 func Transition_Check():
-	if player.is_on_floor():
-		Transitioned.emit("land")
+	if player.hitstun_remaining == 0:
+		Transitioned.emit("jump")
+	pass

@@ -1,2 +1,3 @@
-res://scenes/Player/States/DashStart.gd
-res://scenes/Player/States/Run.gd
+res://scenes/Player/Player.gd
+res://scenes/Player/player.tscn
+res://scenes/Player/InputSystem.gd
