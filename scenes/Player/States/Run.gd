@@ -7,7 +7,7 @@ class_name Run
 func Enter():
 	super()
 	
-	player.get_node("AnimationPlayer").play("run")
+	player.get_node("AnimationPlayer").play("run_001")
 	#player.get_node("AnimationPlayer").pause()
 	
 
@@ -20,7 +20,7 @@ func Physics_Update():
 	#player.get_node("AnimationPlayer").play("run", -1, 1)
 #	player.get_node("AnimationPlayer").seek(15/60, 1, 1)
 
-	player.get_node("AnimationPlayer").seek(((player.frame/5)%10+1)*0.03333333333333333, true)
+	player.get_node("AnimationPlayer").seek(((player.frame/4)%14)*0.03333333333333333, true)
 	
 	#print(player.frame)
 	

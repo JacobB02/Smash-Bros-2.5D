@@ -1,9 +1,9 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1763357420
+::res://::1763438949
 icon.svg::CompressedTexture2D::6543111234097640468::1762319932::1762319932::1::::<><><>0<>0<>d10239bf6f7c18201f4b79e9e758eecf<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 RemoveInterpolation.gd::GDScript::52963495432276504::1762837526::0::1::::<>EditorScript<><>0<>1<><>::
 tiles.tscn::PackedScene::7474809643878393473::1762926085::0::1::::<><><>0<>0<><>::
-::res://scenes/::1763137101
+::res://scenes/::1763438949
 level_1.tscn::PackedScene::1038264163345661206::1763056162::0::1::::<><><>0<>0<><>::uid://due1g5pulxqps::::res://scenes/tiles.meshlib<>uid://cllax257v43m6::::res://scenes/Player/Characters/Test1/test2.tscn<>uid://fgtp463iewwr::::res://scenes/StageCamera.gd
 platform.tscn::PackedScene::695470121603093049::1762963686::0::1::::<><><>0<>0<><>::
 StageCamera.gd::GDScript::364512466834813877::1762319932::0::1::::<>Camera3D<><>0<>0<><>::
@@ -15,16 +15,17 @@ hitbox.tscn::PackedScene::8764548421276106131::1762319932::0::1::::<><><>0<>0<><
 ::res://scenes/components/hurtbox/::1762386033
 hurtbox.gd::GDScript::8970772425187048684::1762319932::0::1::::Hurtbox<>Area3D<><>0<>0<><>::
 hurtbox.tscn::PackedScene::8399494095874483929::1762319932::0::1::::<><><>0<>0<><>::res://scenes/components/hurtbox/hurtbox.gd
-::res://scenes/Player/::1763137185
+::res://scenes/Player/::1763439035
 InputSystem.gd::GDScript::6133492571802571849::1763054723::0::1::::InputSystem<>Node<><>0<>0<><>::
 plat_detector.gd::GDScript::1114182538837525618::1762961222::0::1::::<>ShapeCast3D<><>0<>0<><>::
-Player.gd::GDScript::4204329282649996574::1763054497::0::1::::Player<>CharacterBody3D<><>0<>0<><>::
-player.tscn::PackedScene::4647287875904735460::1763054862::0::1::::<><><>0<>0<><>::uid://b05uxoro8jvso::::res://scenes/Player/Player.gd<>uid://d0qm8evwp8ayi::::res://scenes/Player/PlayerStateMachine.gd<>uid://kvk3df4e18ci::::res://scenes/Player/States/Idle.gd<>uid://bjl43oyvwshdb::::res://scenes/Player/States/Attack.gd<>uid://cnpwnvoobdv2l::::res://scenes/Player/States/Jump.gd<>uid://b12wk8tanrn3o::::res://scenes/Player/States/Jumpsquat.gd<>uid://ctndyx5byg2ef::::res://scenes/Player/InputSystem.gd<>uid://b1n0638g6iy07::::res://scenes/Player/States/Land.gd<>uid://bhhgrqxtxr8ef::::res://scenes/Player/States/DashStart.gd<>uid://27kyy8rik6ue::::res://scenes/Player/States/DoubleJump.gd<>uid://bgvuvf3ovekfu::::res://scenes/Player/States/Run.gd<>uid://coppxtypn4xrc::::res://scenes/Player/States/Hitstun.gd<>uid://drw1o8kpynes4::::res://scenes/components/hurtbox/hurtbox.tscn<>uid://jl3ieg1gkgt3::::res://scenes/Player/States/Shield.gd
+Player.gd::GDScript::4204329282649996574::1763361453::0::1::::Player<>CharacterBody3D<><>0<>0<><>::
+player.tscn::PackedScene::4647287875904735460::1763361836::0::1::::<><><>0<>0<><>::uid://b05uxoro8jvso::::res://scenes/Player/Player.gd<>uid://d0qm8evwp8ayi::::res://scenes/Player/PlayerStateMachine.gd<>uid://kvk3df4e18ci::::res://scenes/Player/States/Idle.gd<>uid://bjl43oyvwshdb::::res://scenes/Player/States/Attack.gd<>uid://cnpwnvoobdv2l::::res://scenes/Player/States/Jump.gd<>uid://b12wk8tanrn3o::::res://scenes/Player/States/Jumpsquat.gd<>uid://ctndyx5byg2ef::::res://scenes/Player/InputSystem.gd<>uid://b1n0638g6iy07::::res://scenes/Player/States/Land.gd<>uid://bhhgrqxtxr8ef::::res://scenes/Player/States/DashStart.gd<>uid://27kyy8rik6ue::::res://scenes/Player/States/DoubleJump.gd<>uid://bgvuvf3ovekfu::::res://scenes/Player/States/Run.gd<>uid://coppxtypn4xrc::::res://scenes/Player/States/Hitstun.gd<>uid://drw1o8kpynes4::::res://scenes/components/hurtbox/hurtbox.tscn<>uid://jl3ieg1gkgt3::::res://scenes/Player/States/Shield.gd
 PlayerStateMachine.gd::GDScript::8947800964762343856::1762319932::0::1::::<>Node<><>0<>0<><>::
 State.gd::GDScript::2337118392301913839::1762319932::0::1::::State<>Node<><>0<>0<><>::
-::res://scenes/Player/Characters/::1763137185
-::res://scenes/Player/Characters/Test1/::1763137185
+::res://scenes/Player/Characters/::1763439035
+::res://scenes/Player/Characters/Test1/::1763439152
 Attacks.gd::GDScript::1918320302634090234::1762319932::0::1::::<>Node<><>0<>0<><>::
+rigged polly (2)_polly texture.png::CompressedTexture2D::8921804867937690764::1763438961::1763439153::1::::<><><>0<>0<>7d9c07b096245d2bc1d14e00607f14bc<>res://.godot/imported/rigged polly (2)_polly texture.png-b5641f887015d6738a327304c6f797f7.s3tc.ctex::
 rigged polly (1) 7.glb::PackedScene::6615355234435823442::1763101797::1763101800::1::::<><><>0<>0<>5c7a3752282c842c692d1db76f8e2469<>res://.godot/imported/rigged polly (1) 7.glb-66eeb9d45bb6b23b31cb750dc0a7de26.scn::uid://bmvjsct40dxd::::res://scenes/Player/Characters/Test1/rigged polly (1) 7_polly texture.png
 rigged polly (1) 7_polly texture.png::CompressedTexture2D::96253455092914581::1763101799::1763101800::1::::<><><>0<>0<>4176a898679be02c46c6e20df7f20df2<>res://.godot/imported/rigged polly (1) 7_polly texture.png-6cc1fce949d77629656b08c5fed72dc5.s3tc.ctex::
 rigged polly (1) 8.blend::PackedScene::3284425022656966627::1762874836::1762874843::1::::<><><>0<>0<>ef8fad391df21a6dbe40bc99382ca806<>res://.godot/imported/rigged polly (1) 8.blend-7b9cba8418124e3f75da663a00c31d04.scn::
@@ -41,23 +42,24 @@ rigged polly (1) t4st 5.glb::PackedScene::3325166834345802674::1763099658::17630
 rigged polly (1) t4st 5_polly texture.png::CompressedTexture2D::7434650926073278371::1763099660::1763099661::1::::<><><>0<>0<>61df5032acd0b8370114868c73dbd7ba<>res://.godot/imported/rigged polly (1) t4st 5_polly texture.png-bc49fe205bbb7df8613f6b77607f8e60.s3tc.ctex::
 rigged polly (1) t4st 6.glb::PackedScene::5116692652946082336::1763099982::1763099984::1::::<><><>0<>0<>0179d3ac4dd194e8ee7cc9f412af31e8<>res://.godot/imported/rigged polly (1) t4st 6.glb-25f886f1b8baf119a5511ad0b3e19715.scn::uid://bxmpwpxg61hjt::::res://scenes/Player/Characters/Test1/rigged polly (1) t4st 6_polly texture.png
 rigged polly (1) t4st 6_polly texture.png::CompressedTexture2D::4026487486469790881::1763099984::1763099984::1::::<><><>0<>0<>f44d410d70d47f7de63504b35278d742<>res://.godot/imported/rigged polly (1) t4st 6_polly texture.png-6e4823d0bb1b149e2444de0831862e7d.s3tc.ctex::
+rigged polly (2).glb::PackedScene::6366654193848933755::1763439152::1763439153::1::::<><><>0<>0<>ad53b74422761781edd94157f75cd83f<>res://.godot/imported/rigged polly (2).glb-27c8b83d64ba4c43f4aec2204fe547b9.scn::uid://d0d128ay2yh5e::::res://scenes/Player/Characters/Test1/rigged polly (2)_polly texture.png
 rigged polly j4c.blend::PackedScene::9041145239354945003::1763084706::1763084709::1::::<><><>0<>0<>deadb4d1c7fee4f090a595999d57d308<>res://.godot/imported/rigged polly j4c.blend-c0199a525248961064190c4fab368b0e.scn::
-test2.tscn::PackedScene::5567669341916784095::1763137176::0::1::::<><><>0<>0<><>::uid://b7hgfgdr7juoq::::res://scenes/Player/player.tscn<>uid://b0igjdpvuy7ah::::res://scenes/Player/Characters/Test1/Attacks/Ftilt.gd<>uid://dlny56kj78rqq::::res://scenes/Player/Characters/Test1/rigged polly (1) t4st 2_polly texture.png<>uid://bmvjsct40dxd::::res://scenes/Player/Characters/Test1/rigged polly (1) 7_polly texture.png
+test2.tscn::PackedScene::5567669341916784095::1763439029::0::1::::<><><>0<>0<><>::uid://b7hgfgdr7juoq::::res://scenes/Player/player.tscn<>uid://d0d128ay2yh5e::::res://scenes/Player/Characters/Test1/rigged polly (2)_polly texture.png<>uid://b0igjdpvuy7ah::::res://scenes/Player/Characters/Test1/Attacks/Ftilt.gd
 test 1.glb::PackedScene::173396747668503432::1763095206::1763095208::1::::<><><>0<>0<>567fddfd2d4ed9b5ecea7e3543158821<>res://.godot/imported/test 1.glb-92385660c96483a1a790d54a169dcd9d.scn::uid://dogixti6uhbse::::res://scenes/Player/Characters/Test1/test 1_polly texture.png
 test 1_polly texture.png::CompressedTexture2D::8154819949475649348::1763095208::1763095208::1::::<><><>0<>0<>97414a6aca010404152aa21fafa5cc27<>res://.godot/imported/test 1_polly texture.png-600aaf8b9768db81f01121a0b7728941.s3tc.ctex::
 testcharbblend.glb::PackedScene::7859335592976458327::1762391786::1762391789::1::::<><><>0<>0<>a489e5f1cff4618f5a7ae12c864cfc11<>res://.godot/imported/testcharbblend.glb-2e1fd634d83b7e33ab93fdc7afb99e00.scn::uid://cpedhnauuvxk2::::res://scenes/Player/Characters/Test1/testcharbblend_testguy_tex.png
 testcharbblend_testguy_tex.png::CompressedTexture2D::5834126868248400051::1762391788::1762391790::1::::<><><>0<>0<>57bff4527e40ced34f9f5be887d93d82<>res://.godot/imported/testcharbblend_testguy_tex.png-ecc7f0ee05b15d7d7f869bed59fd80f2.s3tc.ctex::
 ::res://scenes/Player/Characters/Test1/Attacks/::1762927004
 Ftilt.gd::GDScript::4158037352502099303::1762920759::0::1::::<>Node<><>0<>0<><>::
-::res://scenes/Player/States/::1762927004
+::res://scenes/Player/States/::1763439080
 Attack.gd::GDScript::3042640000136081555::1762319932::0::1::::attack<>State<><>0<>0<><>::
 DashStart.gd::GDScript::2892588770689547305::1762882538::0::1::::Dash_Start<>State<><>0<>0<><>::
 DoubleJump.gd::GDScript::1961810207660640984::1762448928::0::1::::DoubleJump<>State<><>0<>0<><>::
 Hitstun.gd::GDScript::5787403708499891128::1762923932::0::1::::Hitstun<>State<><>0<>0<><>::
 Idle.gd::GDScript::745897707990686144::1762921838::0::1::::Idle<>State<><>0<>0<><>::
-Jump.gd::GDScript::5717622115408335837::1762921295::0::1::::Jump<>State<><>0<>0<><>::
+Jump.gd::GDScript::5717622115408335837::1763359387::0::1::::Jump<>State<><>0<>0<><>::
 Jumpsquat.gd::GDScript::4268424212061363346::1762448727::0::1::::Jumpsquat<>State<><>0<>0<><>::
 Land.gd::GDScript::4239742335461665282::1762319932::0::1::::Land<>State<><>0<>0<><>::
-Run.gd::GDScript::2852157826419485078::1762882539::0::1::::Run<>State<><>0<>0<><>::
-Shield.gd::GDScript::656122330737615914::1762319932::0::1::::Shield<>State<><>0<>0<><>::
+Run.gd::GDScript::2852157826419485078::1763439080::0::1::::Run<>State<><>0<>0<><>::
+Shield.gd::GDScript::656122330737615914::1763361779::0::1::::Shield<>State<><>0<>0<><>::
 shield.tscn::PackedScene::3977090188570015411::1762319932::0::1::::<><><>0<>0<><>::

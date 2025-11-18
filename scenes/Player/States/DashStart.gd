@@ -34,8 +34,8 @@ func Enter():
 
 func Physics_Update():
 	
-	player.get_node("AnimationPlayer").play("run", -1, 0)
-	player.get_node("AnimationPlayer").seek(((player.frame/5)%10+1)*0.03333333333333333, true)
+	player.get_node("AnimationPlayer").play("run_001", -1, 0)
+	player.get_node("AnimationPlayer").seek(((player.frame/4)%14)*0.03333333333333333, true)
 	#print(28/30)
 	#print(floor(player.frame/4))
 	#print(player.frame)
@@ -51,6 +51,8 @@ func Transition_Check():
 		Transitioned.emit("jumpsquat")
 	elif (input_dict["right_pressed"] or input_dict["left_pressed"]):
 		Transitioned.emit("dashstart")
+	elif (input_dict["down_pressed"]):
+		Transitioned.emit("crouch")
 	elif (player.frame >= player.DASH_START_LENGTH and !input_dict["right_down"] and !input_dict["left_down"]):
 		Transitioned.emit("idle")
 	elif (player.frame >= player.DASH_START_LENGTH):

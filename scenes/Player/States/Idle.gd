@@ -7,7 +7,8 @@ func Enter():
 	
 func Physics_Update():
 	
-	player.get_node("AnimationPlayer").play("idle")
+	player.get_node("AnimationPlayer").play("idle_001")
+	player.get_node("AnimationPlayer").seek(((player.frame/15)%2)*0.03333333333333333, true)
 
 
 	
@@ -26,3 +27,5 @@ func Transition_Check():
 		Transitioned.emit("Attack")
 	elif (input_dict["shield_pressed"]):
 		Transitioned.emit("Shield")
+	elif (input_dict["down_pressed"]):
+		Transitioned.emit("crouch")

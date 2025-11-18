@@ -18,7 +18,8 @@ func Enter():
 	
 func Physics_Update():
 	
-	player.get_node("AnimationPlayer").play("jump_rl")
+	player.get_node("AnimationPlayer").play("jump_001")
+	player.get_node("AnimationPlayer").seek((3 - (player.velocity.y/3))*0.03333333333333333, true)
 	player.air_physics(player.FALL_GRAVITY, player.AIR_FRICTION, player.AIR_ACCEL)
 
 	if player.frame == 7 and player.hitpause_time <= 0:

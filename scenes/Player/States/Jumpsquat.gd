@@ -11,7 +11,7 @@ func Physics_Update():
 	#if (state_machine.prev_state.name == "DashStart"):
 	player.b_reverse()
 		
-	player.get_node("AnimationPlayer").play("Jumpstart")
+	player.get_node("AnimationPlayer").play("jumpstart_001")
 	#player.get_node("AnimationPlayer").seek(1/60)
 
 	
@@ -31,7 +31,7 @@ func Exit():
 	if (player.input_dict["jump_down"]):
 		player.velocity.y = player.JUMP_START_VELOCITY
 		player.in_first_jump = 5
-	else:
+	else: 
 		player.velocity.y = player.SHORTHOP_START_VELOCITY
 	
 	
