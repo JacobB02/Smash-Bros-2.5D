@@ -1,3 +1,5 @@
-res://scenes/Player/Player.gd
+res://scenes/Player/Characters/Test1/test2.tscn
+res://scenes/Player/States/Shield.gd
 res://scenes/Player/player.tscn
-res://scenes/Player/InputSystem.gd
+res://scenes/Player/Player.gd
+res://scenes/Player/States/Jump.gd

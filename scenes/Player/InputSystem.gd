@@ -4,7 +4,7 @@ class_name InputSystem
 @export var player: CharacterBody3D
 
 #onready just means var is included in Ready function
-@onready var buffer_time = 20 #5/60th of a second for a buffer
+@onready var buffer_time = 5 #5/60th of a second for a buffer
 @onready var hard_press_threshold = 0.65
 
 
@@ -85,18 +85,18 @@ func set_input_dict():
 	
 	#I do this so that they still trigger whenever right_pressed triggers
 	if Input.is_action_pressed("right_%s" % player.id):
-		input_dict["right_down"] = max(1,input_dict["right_pressed"])
+		input_dict["right_down"] = 1 #max(1,input_dict["right_pressed"])
 	if Input.is_action_pressed("left_%s" % player.id):
-		input_dict["left_down"] = max(1,input_dict["left_pressed"])
+		input_dict["left_down"] = 1 #max(1,input_dict["left_pressed"])
 	if Input.is_action_pressed("down_%s" % player.id):
-		input_dict["down_down"] = max(1,input_dict["down_pressed"])
+		input_dict["down_down"] = 1 #max(1,input_dict["down_pressed"])
 	if Input.is_action_pressed("up_%s" % player.id):
-		input_dict["up_down"] = max(1,input_dict["up_pressed"])
+		input_dict["up_down"] = 1 #max(1,input_dict["up_pressed"])
 		##ADD TAP JUMP CASE:
 	if Input.is_action_pressed("jump_%s" % player.id):
-		input_dict["jump_down"] = max(1,input_dict["jump_pressed"])
+		input_dict["jump_down"] = 1 #max(1,input_dict["jump_pressed"])
 	if Input.is_action_pressed("shield_%s" % player.id):
-		input_dict["shield_down"] = max(1,input_dict["shield_down"])
+		input_dict["shield_down"] = 1 #max(1,input_dict["shield_down"])
 
 func clear_buffer(INPUT):
 	input_dict[INPUT] = 0

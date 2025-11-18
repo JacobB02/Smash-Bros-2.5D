@@ -19,5 +19,4 @@ func Transition_Check():
 	if (input_dict["jump_pressed"]):
 		Transitioned.emit("DoubleJump")
 	if (input_dict["shield_pressed"]):
-		player.in_first_jump = 0
 		Transitioned.emit("Shield")

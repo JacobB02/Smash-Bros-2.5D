@@ -148,20 +148,14 @@ func _physics_process(_delta):
 	#set_collision_mask_value(2, true)
 	if is_on_floor() and input_dict["down_hard_pressed"]:
 		set_collision_mask_value(3, false) 
+		print("DOWN HARD")
 	elif !is_on_floor() and input_dict["down_down"]:
 		set_collision_mask_value(3, false) 
-	elif !input_dict["down_hard_pressed"]:
+		print("DOWN DOWN")
+	else:
 		set_collision_mask_value(3, true) 
 	
-	#This is the area that lets you land on platforms
-	PlatDetector.force_shapecast_update()
-	for collider in get_collision_exceptions():
-		remove_collision_exception_with(collider)
-	if PlatDetector.is_colliding():
-		PlatDetector.force_shapecast_update()
-		for body in PlatDetector.collision_result:
-			print(body)
-			add_collision_exception_with(body.collider)
+	
 	
 	
 	if (hitpause_time > 0):
@@ -183,6 +177,22 @@ func _physics_process(_delta):
 	#position.y = snapped(position.y, 0.01)
 	move_and_slide()
 	
+	
+	#This is the area that lets you land on platforms
+	PlatDetector.force_shapecast_update()
+	for collider in get_collision_exceptions():
+		remove_collision_exception_with(collider)
+
+	if PlatDetector.is_colliding():
+		PlatDetector.force_shapecast_update()
+		PlatDetector.force_shapecast_update()
+		PlatDetector.force_shapecast_update()
+		PlatDetector.force_shapecast_update()
+		PlatDetector.force_shapecast_update()
+		for body in PlatDetector.collision_result:
+			#PlatDetector.add_exception(body.collider)
+			#print(body)
+			add_collision_exception_with(body.collider)
 	#move_and_slide()
 	#frame += 1
 	
@@ -204,13 +214,13 @@ func ground_friction(FRICTION):
 		velocity.x = clamp(velocity.x + FRICTION, velocity.x, 0)
 
 
-func air_physics(fall_grav = FALL_GRAVITY, air_fric = AIR_FRICTION, air_accel = AIR_ACCEL, fall_speed = FALLSPEED):
+func air_physics(fall_grav = FALL_GRAVITY, air_fric = AIR_FRICTION, air_accel = AIR_ACCEL, fall_speed = FALLSPEED, jump_start_grav = JUMP_START_GRAVITY):
 	
 	#vertical physics
 	#if velocity.y > FALLSPEED:
 	
 	if (in_first_jump > 0): 
-		velocity.y = clamp(velocity.y-JUMP_START_GRAVITY, -fall_speed, 500)
+		velocity.y = clamp(velocity.y-jump_start_grav, -fall_speed, 500)
 		in_first_jump -= 1
 	else: 
 		velocity.y = clamp(velocity.y-fall_grav, -fall_speed, 500)
@@ -226,12 +236,12 @@ func air_physics(fall_grav = FALL_GRAVITY, air_fric = AIR_FRICTION, air_accel = 
 	
 	
 	#issue is NOT order, its the code itself
-	if (input_dict["right_down"] and !(input_dict["left_down"])):
+	if (air_accel != 0 and input_dict["right_down"] and !(input_dict["left_down"])):
 		if (velocity.x < MAXAIRSPEED):
 			velocity.x = velocity.x+air_accel
 			if (velocity.x >= MAXAIRSPEED):
 				velocity.x = MAXAIRSPEED
-	elif (!(input_dict["right_down"]) and input_dict["left_down"]):
+	elif (air_accel != 0 and !(input_dict["right_down"]) and input_dict["left_down"]):
 		if (velocity.x > -MAXAIRSPEED):
 			velocity.x = velocity.x-air_accel
 			if (velocity.x <= -MAXAIRSPEED):
