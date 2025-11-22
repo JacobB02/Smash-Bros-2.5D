@@ -1,5 +1,5 @@
 extends State
-class_name Dash_Start
+class_name Dash_Stop
 
 
 #hi. I need to add a DASHTURN even if its brief so that I can do RAR
@@ -9,7 +9,7 @@ func Enter():
 	
 	player.get_node("AnimationPlayer").play("run")
 	
-	print("IN DASH START ENTER")
+	print("IN DASH STOP ENTER")
 	print(str(state_machine.prev_state.name))
 
 	if (state_machine.prev_state.name == "land" or state_machine.prev_state.name == "idle_air" or state_machine.prev_state.name == "double_jump" or state_machine.prev_state.name == "landing_lag"):
@@ -24,13 +24,11 @@ func Enter():
 			player.dir = -1
 		inputs.clear_buffer("left_pressed") 
 		inputs.clear_buffer("right_pressed")
-		inputs.clear_buffer("down_pressed") #for crouch
 	
 	print("TESTING" + str(input_dict["right_down"]) + str(input_dict["left_down"]) )
 	
 	#sprite.play("DashStart")
 	#sprite.set_frame(player.frame*sprite.sprite_frames.get_frame_count(sprite.get_animation())/player.DASH_START_LENGTH)
-	player.velocity.x = (player.DASHSPEED*player.dir ) #- 4 + player.frame/10)*player.dir 
 
 
 func Physics_Update():
@@ -43,9 +41,7 @@ func Physics_Update():
 
 	#sprite.play("DashStart")
 	#sprite.set_frame(parent.frame*sprite.sprite_frames.get_frame_count(sprite.get_animation())/parent.DASH_START_LENGTH)
-	#player.ground_friction(player.GROUND_FRICTION)
-	player.velocity.x = (player.DASHSPEED*player.dir) # - 4 + player.frame/10)*player.dir 
-
+	player.ground_friction(player.GROUND_FRICTION)
 	
 func Transition_Check():
 	if !player.is_on_floor():
@@ -55,13 +51,10 @@ func Transition_Check():
 	elif ((input_dict["right_pressed"] and player.dir == -1) 
 	or (input_dict["left_pressed"] and player.dir == 1)):
 		Transitioned.emit("dashturn")
-	elif ((input_dict["right_pressed"] and player.dir == 1) 
-	or (input_dict["left_pressed"] and player.dir == -1)):
-		Transitioned.emit("dashstart")
 	elif (input_dict["down_pressed"]):
 		Transitioned.emit("crouch")
-	elif (player.frame >= player.DASH_START_LENGTH and !input_dict["right_down"] and !input_dict["left_down"]):
-		Transitioned.emit("dashstop")
+	elif (player.frame >= player.DASH_STOP_LENGTH and !input_dict["right_down"] and !input_dict["left_down"]):
+		Transitioned.emit("idle")
 	#elif (player.input_dict["down_down"]):
 		#Transitioned.emit("crouch")
 	#elif (player.input_dict["attack_pressed"]):

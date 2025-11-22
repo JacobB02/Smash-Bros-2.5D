@@ -5460,7 +5460,6 @@ _data = {
 }
 
 [node name="Player" instance=ExtResource("1_g6xm6")]
-id = null
 
 [node name="rigged polly (2)" type="Node3D" parent="MeshInstance3D" index="0"]
 transform = Transform3D(0.087155804, 0, 0.9961947, 0, 1, 0, -0.9961947, 0, 0.087155804, 0, 0, 0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b7hgfgdr7juoq"]
+[gd_scene load_steps=22 format=3 uid="uid://b7hgfgdr7juoq"]
 
 [ext_resource type="Script" uid="uid://b05uxoro8jvso" path="res://scenes/Player/Player.gd" id="1_1jjfh"]
 [ext_resource type="Script" uid="uid://d0qm8evwp8ayi" path="res://scenes/Player/PlayerStateMachine.gd" id="2_1ww4c"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" uid="uid://coppxtypn4xrc" path="res://scenes/Player/States/Hitstun.gd" id="10_t042r"]
 [ext_resource type="PackedScene" uid="uid://drw1o8kpynes4" path="res://scenes/components/hurtbox/hurtbox.tscn" id="11_s2fff"]
 [ext_resource type="Script" uid="uid://jl3ieg1gkgt3" path="res://scenes/Player/States/Shield.gd" id="12_t6q27"]
+[ext_resource type="Script" uid="uid://bmp7ekqwhphkb" path="res://scenes/Player/States/DashStop.gd" id="13_1bwnf"]
+[ext_resource type="Script" uid="uid://1l834lc078kg" path="res://scenes/Player/States/DashTurn.gd" id="14_tayva"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_du7pj"]
 size = Vector3(1, 2, 1)
@@ -75,6 +77,14 @@ script = ExtResource("2_yn07p")
 [node name="Shield" type="Node" parent="StateMachine"]
 script = ExtResource("12_t6q27")
 metadata/_custom_type_script = "uid://jl3ieg1gkgt3"
+
+[node name="DashStop" type="Node" parent="StateMachine"]
+script = ExtResource("13_1bwnf")
+metadata/_custom_type_script = "uid://bmp7ekqwhphkb"
+
+[node name="DashTurn" type="Node" parent="StateMachine"]
+script = ExtResource("14_tayva")
+metadata/_custom_type_script = "uid://1l834lc078kg"
 
 [node name="InputSystem" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("5_7ionf")
