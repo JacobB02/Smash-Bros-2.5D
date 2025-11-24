@@ -1,15 +1,18 @@
 extends State
 class_name Hitstun
 
+
 func Enter():
 	super()
 	print("hitstun time: ", player.hitstun_remaining)
+	
 	#orig_velocity = 
 	pass
 	
 func Physics_Update():
-	#player.air_physics(player.JUMP_GRAVITY, player.FALL_GRAVITY, player.AIR_FRICTION, player.AIR_ACCEL)
-	pass
+	
+	player.knockback_physics()
+	
 	
 	
 	

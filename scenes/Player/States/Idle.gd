@@ -21,6 +21,8 @@ func Transition_Check():
 		Transitioned.emit("jump")
 	if (input_dict["jump_pressed"]):
 		Transitioned.emit("Jumpsquat")
+	elif (input_dict["right_pressed"] and input_dict["left_pressed"]):
+		Transitioned.emit("dashturn")
 	elif (input_dict["right_pressed"] or input_dict["left_pressed"]):
 		Transitioned.emit("dashstart")
 	elif (input_dict["attack_pressed"]):

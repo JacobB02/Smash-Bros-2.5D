@@ -48,11 +48,15 @@ func Transition_Check():
 		Transitioned.emit("jump")
 	elif (input_dict["jump_pressed"]):
 		Transitioned.emit("jumpsquat")
+		
+	elif (input_dict["down_pressed"]):
+		Transitioned.emit("crouch")
+		
+	
 	elif ((input_dict["right_pressed"] and player.dir == -1) 
 	or (input_dict["left_pressed"] and player.dir == 1)):
 		Transitioned.emit("dashturn")
-	elif (input_dict["down_pressed"]):
-		Transitioned.emit("crouch")
+		
 	elif (player.frame >= player.DASH_STOP_LENGTH and !input_dict["right_down"] and !input_dict["left_down"]):
 		Transitioned.emit("idle")
 	#elif (player.input_dict["down_down"]):

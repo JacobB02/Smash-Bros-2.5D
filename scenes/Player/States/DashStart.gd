@@ -30,21 +30,27 @@ func Enter():
 	
 	#sprite.play("DashStart")
 	#sprite.set_frame(player.frame*sprite.sprite_frames.get_frame_count(sprite.get_animation())/player.DASH_START_LENGTH)
-	player.velocity.x = (player.DASHSPEED*player.dir ) #- 4 + player.frame/10)*player.dir 
+	player.velocity.x = (abs(player.velocity.x)+3)*player.dir #(player.DASHSPEED*player.dir ) #- 4 + player.frame/10)*player.dir 
 
 
 func Physics_Update():
+	
+	#print(player.frame)
 	
 	player.get_node("AnimationPlayer").play("run_001", -1, 0)
 	player.get_node("AnimationPlayer").seek(((player.frame/4)%14)*0.03333333333333333, true)
 	#print(28/30)
 	#print(floor(player.frame/4))
 	#print(player.frame)
-
+	
 	#sprite.play("DashStart")
 	#sprite.set_frame(parent.frame*sprite.sprite_frames.get_frame_count(sprite.get_animation())/parent.DASH_START_LENGTH)
 	#player.ground_friction(player.GROUND_FRICTION)
-	player.velocity.x = (player.DASHSPEED*player.dir) # - 4 + player.frame/10)*player.dir 
+	if (input_dict["right_down"] and player.dir == 1):
+		player.velocity.x = clamp(player.velocity.x + 0.5, -1*player.DASHSPEED, player.DASHSPEED)
+	elif (input_dict["left_down"] and player.dir == -1):
+		player.velocity.x = clamp(player.velocity.x - 0.5, -1*player.DASHSPEED, player.DASHSPEED)
+	 #(player.DASHSPEED*player.dir) # - 4 + player.frame/10)*player.dir 
 
 	
 func Transition_Check():
@@ -52,16 +58,29 @@ func Transition_Check():
 		Transitioned.emit("jump")
 	elif (input_dict["jump_pressed"]):
 		Transitioned.emit("jumpsquat")
+	
+	elif (input_dict["down_pressed"]):
+		Transitioned.emit("crouch")
+		
 	elif ((input_dict["right_pressed"] and player.dir == -1) 
 	or (input_dict["left_pressed"] and player.dir == 1)):
 		Transitioned.emit("dashturn")
-	elif ((input_dict["right_pressed"] and player.dir == 1) 
-	or (input_dict["left_pressed"] and player.dir == -1)):
+		
+		
+	elif ((player.frame > player.DASH_START_LENGTH and ((input_dict["right_pressed"] and player.dir == 1) 
+	or (input_dict["left_pressed"] and player.dir == -1)))):
 		Transitioned.emit("dashstart")
-	elif (input_dict["down_pressed"]):
-		Transitioned.emit("crouch")
-	elif (player.frame >= player.DASH_START_LENGTH and !input_dict["right_down"] and !input_dict["left_down"]):
+		
+	elif (player.frame > player.DASH_START_LENGTH and !input_dict["right_down"] and !input_dict["left_down"]):
 		Transitioned.emit("dashstop")
+	elif (player.frame == player.DASH_START_LENGTH and input_dict["down_down"]):
+		Transitioned.emit("crouch")
+	
+	elif (player.frame == player.DASH_START_LENGTH and ((!input_dict["right_down"] and player.dir == 1) or (!input_dict["left_down"] and player.dir == -1))):
+		Transitioned.emit("idle")
+		
+		
+	
 	#elif (player.input_dict["down_down"]):
 		#Transitioned.emit("crouch")
 	#elif (player.input_dict["attack_pressed"]):

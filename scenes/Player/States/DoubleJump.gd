@@ -23,9 +23,9 @@ func Physics_Update():
 	player.air_physics(player.FALL_GRAVITY, player.AIR_FRICTION, player.AIR_ACCEL)
 
 	if player.frame == 7 and player.hitpause_time <= 0:
-		var hbox = player.create_hitbox(500,700,1,5,80,
-			5,1.0,
-			50,0.5,3,"normal",Vector2(20,-5),0,6)
+		var hbox = player.create_hitbox(500,700,1,5,90,
+			15,1.0,
+			10,0.5,3,"normal",Vector2(20,-5),0,6)
 
 	
 func Transition_Check():

@@ -43,3 +43,5 @@ func Transition_Check():
 		Transitioned.emit("Shield")
 	elif (crouch_let_go_time == 0):
 		Transitioned.emit("idle")
+	elif ((input_dict["right_down"] or input_dict["left_down"]) and player.frame > 8):
+		Transitioned.emit("dashstart")

@@ -83,7 +83,7 @@ var DJUMP_HSP_MAX = 5
 var DJUMP_CHANGE = 6
 
 var DASHSPEED = 10
-var DASH_START_LENGTH = 12
+var DASH_START_LENGTH = 8
 var DASH_TURN_FRICTION = 0.2
 var DASH_TURN_LENGTH = 8
 var DASH_STOP_LENGTH = 5
@@ -136,6 +136,8 @@ func _physics_process(_delta):
 	#
 	inputs.set_input_dict()
 	
+	#print(velocity.x)
+	
 	if dir == 1:
 		$MeshInstance3D.rotation = Vector3(0,0,0)
 	else:
@@ -151,16 +153,16 @@ func _physics_process(_delta):
 		#
 	#set_collision_mask_value(2, true)
 	if is_on_floor() and input_dict["down_hard_pressed"]:
-		set_collision_mask_value(3, false) 
+		set_collision_mask_value(3, false)
 		print("DOWN HARD")
-	elif !is_on_floor() and input_dict["down_down"]:
+	elif !is_on_floor() and (input_dict["down_down"] or input_dict["down_hard_pressed"]):
 		set_collision_mask_value(3, false) 
 		print("DOWN DOWN")
 	else:
 		set_collision_mask_value(3, true) 
 	
 	
-	
+	#print(get_real_velocity())
 	
 	if (hitpause_time > 0):
 		hitpause_time -= 1
@@ -180,6 +182,8 @@ func _physics_process(_delta):
 	#position.x = snapped(position.x, 0.01)
 	#position.y = snapped(position.y, 0.01)
 	move_and_slide()
+	
+	print(velocity.y)
 	
 	
 	#This is the area that lets you land on platforms
@@ -363,7 +367,7 @@ func check_colliding_hitboxes():
 		#hitpause time for the PERSON BEING HIT is the max base hitpause 
 		#of all of the attacks hitting them
 		hitpause_time = max(hitpause_time, hitbox.base_hitpause)
-		hitstun_total = max(hitstun_total, ceil(new_launch_speed))
+		hitstun_total = 500 #max(hitstun_total, ceil(new_launch_speed))
 		hitstun_remaining = hitstun_total
 		
 	
@@ -397,6 +401,25 @@ func knockback(p,hitbox):
 	var base_kb = hitbox.base_kb
 
 	return float(base_kb+(p+damage)*kb_scaling*0.5*kb_adj)*1.2
+
+func knockback_physics(fall_grav = FALL_GRAVITY, air_fric = AIR_FRICTION, ground_fric = GROUND_FRICTION):
+	
+	if !is_on_floor():
+		
+		
+		#VERTICAL VELOCITY HANDLING
+		if ((velocity.y > fall_grav) 
+		or (velocity.y < -FALLSPEED and velocity.y < 0)
+		):
+			velocity.y -= velocity.y*0.025 
+		#HORIZONTAL VELOCITY HANDLING:
+		if (abs(velocity.x) > MAXAIRSPEED):
+			velocity.x -= velocity.x*0.025
+			
+		air_physics(fall_grav, air_fric, AIR_ACCEL)
+	
+	else:
+		ground_friction(ground_fric)
 
 
 func b_reverse():

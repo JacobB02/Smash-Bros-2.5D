@@ -10,7 +10,7 @@ func Enter():
 	player.get_node("AnimationPlayer").play("run")
 	
 	print("IN DASH TURN")
-	print(str(state_machine.prev_state.name))
+	#print(str(state_machine.prev_state.name))
 
 	player.dir *= -1
 	inputs.clear_buffer("left_pressed") 
@@ -32,9 +32,9 @@ func Physics_Update():
 
 	#sprite.play("DashStart")
 	#sprite.set_frame(parent.frame*sprite.sprite_frames.get_frame_count(sprite.get_animation())/parent.DASH_START_LENGTH)
-	#player.ground_friction(player.)
+	player.ground_friction(player.DASH_TURN_FRICTION)
 	
-	player.velocity.x += player.DASH_TURN_FRICTION*player.dir
+	#player.velocity.x += player.
 	
 func Transition_Check():
 	if !player.is_on_floor():
@@ -45,6 +45,10 @@ func Transition_Check():
 		
 	elif (input_dict["down_pressed"]):
 		Transitioned.emit("crouch")
+		
+	#this is if you hold both directions from idle
+	elif (player.frame >= player.DASH_TURN_LENGTH and input_dict["right_down"] and input_dict["left_down"]):
+		Transitioned.emit("dashturn")
 		
 	elif (player.frame >= player.DASH_TURN_LENGTH 
 	and ((input_dict["right_down"] and player.dir == 1) 

@@ -1,6 +1,12 @@
-res://scenes/Player/player.tscn
-res://scenes/Player/States/DashStop.gd
-res://scenes/Player/States/DashTurn.gd
+res://scenes/Player/Player.gd
 res://scenes/Player/States/DashStart.gd
 res://scenes/Player/Characters/Test1/test2.tscn
-res://scenes/Player/Player.gd
+res://scenes/level_1.tscn
+res://scenes/Player/States/Crouch.gd
+res://scenes/Player/States/Idle.gd
+res://scenes/Player/States/DashTurn.gd
+res://scenes/Player/States/DashStop.gd
+res://scenes/Player/player.tscn
+res://scenes/Player/States/Hitstun.gd
+res://scenes/Player/States/DoubleJump.gd
+res://scenes/Player/Characters/Test1/Attacks/Ftilt.gd

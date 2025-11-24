@@ -14,7 +14,7 @@ func Physics_Update():
 	player.get_node("AnimationPlayer").play("jumpstart_001")
 	#player.get_node("AnimationPlayer").seek(1/60)
 
-	
+	inputs.clear_buffer("jump_pressed") 
 	
 
 func Exit():
